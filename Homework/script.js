@@ -1,14 +1,14 @@
-// Get body element
+// Get body 
 const body = document.querySelector("body");
 
-// Array to store all tasks
+// Array of tasks
 let tasks = [];
 
-// Create main container
+// Main container
 const container = document.createElement("div");
 container.className = "container";
 
-// Create header section
+// header section
 const header = document.createElement("header");
 const h1 = document.createElement("h1");
 h1.textContent = "📝 My TODO List";
@@ -18,7 +18,7 @@ subtitle.textContent = "Stay organized and productive";
 header.appendChild(h1);
 header.appendChild(subtitle);
 
-// Create input section
+// Input section
 const inputSection = document.createElement("div");
 inputSection.className = "input-section";
 
@@ -39,11 +39,11 @@ addButton.appendChild(document.createTextNode(" Add Task"));
 inputSection.appendChild(taskInput);
 inputSection.appendChild(addButton);
 
-// Create stats section
+// Stats section
 const statsDiv = document.createElement("div");
 statsDiv.className = "stats";
 
-// Total tasks stat
+// tasks stat
 const totalStatItem = document.createElement("div");
 totalStatItem.className = "stat-item";
 const totalTasksEl = document.createElement("span");
@@ -187,7 +187,7 @@ function renderTasks() {
     });
 }
 
-// Create a single task element
+// Create task element
 function createTaskElement(task) {
     const taskDiv = document.createElement('div');
     taskDiv.className = `task-item ${task.done ? 'done' : ''}`;

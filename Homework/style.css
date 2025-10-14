@@ -161,7 +161,7 @@ header h1 {
 }
 
 .task-item.done {
-    border-left-color: #4caf50;
+    border-left-color: #914caf;
     opacity: 0.9;
 }
 
