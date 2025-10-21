@@ -34,6 +34,14 @@
                 fullName() {
                   return this.firstname + ' ' + this.lastname;
                 }   
+              },
+              watch: {
+                firstname(newVal, oldVal) {
+                  console.log('Firstname changed from ' + oldVal + ' to ' + newVal);
+                },
+                lastname(newVal, oldVal) {
+                  console.log('Lastname changed from ' + oldVal + ' to ' + newVal);
+                }
               }
             }
           ).mount('#app')
