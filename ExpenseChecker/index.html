@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            
+            <header>
+                <h1>Expense Tracker</h1>
+            </header>
+
+            <!-- Inputy -->
+            <div class="input-section">
+                <!-- name -->
+                <input 
+                    v-model="newExpense.name" 
+                    @keyup.enter="addExpense"
+                    type="text" 
+                    placeholder="Názov výdavku"
+                >
+                <!-- date -->
+                <input 
+                    v-model="newExpense.date" 
+                    type="date"
+                >
+                <!-- amount -->
+                <input 
+                    v-model="newExpense.amount" 
+                    @keyup.enter="addExpense"
+                    type="number" 
+                    step="0.01"
+                    placeholder="Suma (€)"
+                >
+                <button @click="addExpense" class="add-btn">+ Pridať</button>
+                
+                <div v-if="errorMessage" class="error-message">
+                    {{ errorMessage }}
+                </div>
+            </div>
+
+            <div class="total-section">
+                <span>Celkové výdavky:</span>
+                <span class="total-amount">{{ totalExpenses.toFixed(2) }} €</span>
+            </div>
+
+            <div class="months-container">
+                
+                <div v-if="expenses.length === 0" class="empty-state">
+                    <div class="empty-state-icon">📊</div>
+                    <div class="empty-state-text">Zatiaľ žiadne výdavky. Pridaj prvý!</div>
+                </div>
+
+                <div v-for="(monthData, monthKey) in groupedExpenses" :key="monthKey" class="month-section">
+                    
+                    <div class="month-header">
+                        <h3>{{ formatMonthName(monthKey) }}</h3>
+                        <span class="month-total">{{ monthData.total.toFixed(2) }} €</span>
+                    </div>
+
+                    <div class="expenses-list">
+                        <div v-for="expense in monthData.expenses" :key="expense.id" class="expense-item">
+                            
+                            <div v-if="editingId !== expense.id" class="expense-info">
+                                <div>
+                                    <span class="expense-name">{{ expense.name }}</span>
+                                    <span class="expense-date">{{ formatDate(expense.date) }}</span>
+                                </div>
+                                <span class="expense-amount">{{ expense.amount.toFixed(2) }} €</span>
+                            </div>
+
+                            <!-- Edit -->
+                            <div v-if="editingId === expense.id" class="expense-edit">
+                                <input v-model="expense.name" type="text" placeholder="Názov">
+                                <input v-model="expense.date" type="date">
+                                <input v-model="expense.amount" type="number" step="0.01" placeholder="Suma">
+                            </div>
+
+                            <!-- buttony -->
+                            <div class="expense-actions">
+                                <!-- edit delete -->
+                                <template v-if="editingId !== expense.id">
+                                    <button @click="startEdit(expense.id)" class="icon-btn edit">upraviť</button>
+                                    <button @click="deleteExpense(expense.id)" class="icon-btn delete">zmazať</button>
+                                </template>
+                                <!-- save cancel -->
+                                <template v-if="editingId === expense.id">
+                                    <button @click="saveEdit(expense)" class="icon-btn save">hotovo</button>
+                                    <button @click="cancelEdit()" class="icon-btn cancel">zrušiť</button>
+                                </template>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>

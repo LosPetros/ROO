@@ -1,0 +1,235 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+/* Hlavný kontajner */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+/* Header */
+header {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Input sekcia */
+.input-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+.input-section input {
+    padding: 8px;
+    border: 1px solid #999;
+    font-size: 0.95rem;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+/* Tlačidlo pridať */
+.add-btn {
+    padding: 8px 20px;
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin-left: 30px;
+}
+
+.add-btn:hover {
+    background: #555;
+}
+
+/* Chybová hláška */
+.error-message {
+    padding: 10px;
+    background-color: #ffeeee;
+    color: #cc0000;
+    border: 1px solid #cc0000;
+    margin-top: 10px;
+}
+
+/* Celková suma */
+.total-section {
+    padding: 15px;
+    border: 2px solid #333;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.total-amount {
+    float: right;
+}
+
+/* Kontajner mesiacov */
+.months-container {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* Sekcia mesiaca */
+.month-section {
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+}
+
+/* Header mesiaca */
+.month-header {
+    padding: 10px;
+    background: #333;
+    color: white;
+    font-weight: bold;
+}
+
+.month-header h3 {
+    display: inline;
+    font-size: 1rem;
+}
+
+.month-total {
+    float: right;
+}
+
+/* Zoznam expenses */
+.expenses-list {
+    padding: 10px;
+}
+
+/* Jeden expense item */
+.expense-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.expense-item:last-child {
+    border-bottom: none;
+}
+
+.expense-info {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.expense-name {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.expense-date {
+    font-size: 0.85rem;
+    color: #666;
+    display: block;
+}
+
+.expense-amount {
+    font-weight: bold;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Edit režim - inputy */
+.expense-edit {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+
+.expense-edit input {
+    padding: 5px;
+    border: 1px solid #999;
+    font-size: 0.9rem;
+}
+
+/* Tlačidlá akcií */
+.expense-actions {
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+.icon-btn {
+    padding: 5px 10px;
+    border: 1px solid #999;
+    background: white;
+    cursor: pointer;
+}
+
+.icon-btn:hover {
+    background: #f0f0f0;
+}
+
+/* Prázdny stav - keď nie sú žiadne výdavky */
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+
+.empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.empty-state-text {
+    font-size: 1rem;
+}
+
+/* Responzivita - mobilné zariadenia */
+@media (max-width: 700px) {
+    .container {
+        padding: 15px;
+    }
+
+    .expense-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .expense-amount {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+
+    .expense-actions {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .expense-edit {
+        flex-direction: column;
+    }
+}
